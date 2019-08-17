@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+    <fieldset>
+        <legend>Login</legend>
+        <div class="form-field">
+            <label>PIN:</label>
+            <input name="pin" formControlName="pin">
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button (click)="login()">Login</button>
+    </div>
+</form>
+
+<div *ngIf="loginError">
+    Invalid PIN. Please try again.
+</div>
