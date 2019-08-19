@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule} from '@angular/forms';
@@ -13,6 +13,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { BalanceComponent } from './balance/balance.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { ExitComponent } from './exit/exit.component';
 
 
 
@@ -23,7 +24,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     DashboardComponent,
     WithdrawComponent,
     BalanceComponent,
-    TopBarComponent
+    TopBarComponent,
+    ExitComponent
   ],
   imports: [
     BrowserModule,
@@ -36,12 +38,17 @@ import { TopBarComponent } from './top-bar/top-bar.component';
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'withdraw', component: WithdrawComponent, canActivate: [AuthGuard] },
       { path: 'balance', component: BalanceComponent, canActivate: [AuthGuard] },
+      { path: 'exit', component: ExitComponent, canActivate: [AuthGuard] },
     ])
+  ],
+  exports: [
+    TopBarComponent
   ],
   providers: [
     ReactiveFormsModule,
     HttpClientModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

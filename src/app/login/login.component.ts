@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   loginError=false;
+  loading=false;
 
   constructor(
     private fb: FormBuilder, 
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.loading=true;
     let pin = {
       pin: this.form.value.pin
     }
@@ -37,12 +39,12 @@ export class LoginComponent implements OnInit {
         this.authService.setLoggedIn(true);
         this.authService.setBalance(data["currentBalance"]);
         this.router.navigate(['dashboard']);
+        this.loading=false;
       },
       error => {
         this.loginError=true;
         this.authService.setLoggedIn(false);
-        console.log("error");
-        console.log(error);
+        this.loading=false;
     });
   }
 

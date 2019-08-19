@@ -1,0 +1,22 @@
+.balance {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .title{
+        margin-top: 120px;
+    }
+}
+
+.blue{
+    margin-top: 50px;
+    font-size: 28px;
+    color: #01b4f5;
+}
+
+.white{
+    font-size: 32px;
+    font-family: Arial;
+    font-weight: bold;
+}

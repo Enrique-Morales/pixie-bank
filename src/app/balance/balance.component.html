@@ -1,1 +1,13 @@
-<p>balance works!</p>
+<section class="balance">
+    <div>
+        <div class="blue">Current balance</div>
+        <div class="white">£{{currentBalance}}</div>
+    </div>
+    <div class="title">Do you want to perform any other operation?</div>
+    <div class="button-group">
+        <a [routerLink]="['/dashboard']" class="button">Yes</a><br>
+        <a [routerLink]="['/exit']" class="button">No</a>
+    </div>
+</section>
+
+

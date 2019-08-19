@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, } from '@angular/common/http';
 import { Observable } from 'rxjs';
+interface PinInterface {
+  pin: String
+}
+
+interface ResponseInterface {
+  error: String,
+  currentBalance: Number
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  
 
   private loggedInStatus = JSON.parse(localStorage.getItem("loggedIn") || 'false');
 
@@ -32,6 +41,7 @@ export class AuthService {
   }          
 
   logout() {
+      this.loggedInStatus=false;
       localStorage.removeItem("loggedIn");
       localStorage.removeItem("currentBalance");
   }

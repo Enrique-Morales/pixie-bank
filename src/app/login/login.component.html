@@ -1,16 +1,15 @@
-<form [formGroup]="form">
-    <fieldset>
-        <legend>Login</legend>
-        <div class="form-field">
-            <label>PIN:</label>
-            <input name="pin" formControlName="pin">
-        </div>
-    </fieldset>
-    <div class="form-buttons">
-        <button (click)="login()">Login</button>
+<section class="login">
+    <div class="title">Welcome to Pixie Bank. Here we will do magic with your money.</div>
+    <form [formGroup]="form">
+            <div class="form-field">
+                <div class="text">Please, enter your PIN number:</div>
+                <input name="pin" formControlName="pin" maxlength="4" type="password"  autofocus>
+            </div>
+            
+    </form>
+    <button (click)="login()" class="button" *ngIf="!loading">Proceed</button>
+    <button class="button" *ngIf="loading"><img src="../../assets/img/loading.gif" alt="Loading" width="33"></button>
+    <div *ngIf="loginError" class="title">
+        Invalid PIN. Please try again.
     </div>
-</form>
-
-<div *ngIf="loginError">
-    Invalid PIN. Please try again.
-</div>
+</section>

@@ -1,1 +1,46 @@
-<p>withdraw works!</p>
+<section class="withdraw">
+    <div *ngIf="!error && !finished">
+        <div class="title">Withdraw Cash</div>
+        <form [formGroup]="form">
+            <div class="form-field">
+                <label>Amount:</label>
+                <div class="amount"><input name="amount" formControlName="amount" type="number" autofocus>&nbsp;£</div>
+            </div>
+            <div class="button-group">
+                <a class="button" [routerLink]="['/dashboard']">Back</a>
+                <button class="button" (click)="withdraw()">Proceed</button>
+            </div>
+        </form>
+    </div>
+        
+    <div *ngIf="error && !finished">
+        <div *ngIf="!overdraft">
+            <div class="title">{{atmResponse.status}}</div>
+            <div class="blue">{{atmResponse.message}}</div>
+            <button (click)="error=false" class="button">Back</button>
+        </div>
+        <div *ngIf="overdraft">
+            <div class="title">{{atmResponse.status}}</div>
+            <div class="blue">{{atmResponse.message}}</div>
+            <div class="button-group">
+                <button (click)="error=false; overdraft=false" class="button">Cancel</button>
+                <button (click)="withdraw(true)" class="button">Proceed</button>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="!error && finished">
+        <div class="title">Operation succesful. Please retrieve your money</div>
+        <div class="outcome-list">
+                <div class="bill">Total: {{amountTyped}}£</div>
+                <div *ngFor="let note of note_list" class="bill">
+                    {{note.amount}} x {{note.value}}£
+                </div>
+        </div>
+        <div class="title">Do you want to perform any other operation?</div>
+        <div class="button-group">
+            <a [routerLink]="['/dashboard']" class="button">Yes</a><br>
+            <a [routerLink]="['/exit']" class="button">No</a>
+        </div>
+    </div>
+</section>

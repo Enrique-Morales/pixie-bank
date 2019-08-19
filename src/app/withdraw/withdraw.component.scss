@@ -1,0 +1,66 @@
+.withdraw {
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .button-group{
+            width: 900px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: baseline;
+
+            .button, a.button {
+                display: block;
+                box-sizing: border-box;
+                margin-top: 90px;
+                @media all and (max-width: 736px) { margin-top: 45px; }
+            }
+            
+        @media all and (max-width: 980px) { flex-direction: column;  align-items: center; }
+        }
+    }
+    div.amount{
+        display: inline-block;
+        font-size: 38px;
+    }
+    div.outcome-list{
+        flex-direction: row;
+        width:800px;
+        @media all and (max-width: 736px) { 
+        flex-direction: column;
+        width:100%;
+         }
+    }
+}
+
+.amount{
+    display: flex;
+    flex-direction: row;
+}
+
+input {
+    background: transparent;
+    border: 2px solid white;
+    font-size: 38px;
+    width: 234px;
+    text-align: center;
+    color: white;
+    margin-left: 30px;
+}
+
+.form-field label, .blue {
+    font-size: 24px;
+    padding: 30px 0;
+    color: #01b4f5;
+    font-weight: bold;
+}
+
+.bill{
+    margin-top: 10px;
+    font-size: 35px;
+    color: #01b4f5;
+    font-weight: bold;
+}
